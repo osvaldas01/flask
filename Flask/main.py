@@ -14,12 +14,12 @@ def word(word):
 def keliamieji():
     years = []
     for year in range(1900, 2101):
-        if year % 4 == 0 and year % 100 != 0 or year % 300 == 0:
+        if year % 4 == 0 and year % 100 != 0 or year % 400 == 0:
             years.append(year)
     return render_template('keliamieji.html', years=years)
 
 def is_leap_year(year):
-    if (year % 4 == 0 and year % 100 != 0) or (year % 300 == 0):
+    if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
         return True
     return False
 
