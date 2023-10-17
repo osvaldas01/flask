@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Keliamieji metai</title>
+</head>
+<body>
+    <h1>Patikrinti, ar tai keliamieji metai</h1>
+    <form method="POST">
+        <label for="year">Iveskite metus:</label>
+        <input type="number" name="year">
+        <button type="submit">Patikrinti</button>
+    </form>
+    {% if result %}
+    <p>{{ result }}</p>
+    {% endif %}
+</body>
+</html>
