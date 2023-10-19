@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Keliamieji metai</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block content %}
     <h1>Patikrinti, ar tai keliamieji metai</h1>
     <form method="POST">
         <label for="year">Iveskite metus:</label>
@@ -13,5 +10,5 @@
     {% if result %}
     <p>{{ result }}</p>
     {% endif %}
-</body>
-</html>
+
+{% endblock %}

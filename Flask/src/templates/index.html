@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+   <figure class="figure">
+       <img src="https://pngimg.com/uploads/welcome/welcome_PNG35.png">
+         <figcaption class="figure-caption"></figcaption>
+    </figure>
+
+    <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Dropdown button
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="{{ url_for('keliamieji')}}">Keliamieji</a>
+        <a class="dropdown-item" href="{{ url_for('check_leap_year')}}">Patikrink Ar Keliamieji</a>
+    </div>
+
+
+
+
+</body>
+{% endblock %}

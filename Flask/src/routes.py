@@ -1,6 +1,6 @@
-from flask import Flask, render_template, request
+from flask import render_template, request
+from src import app
 
-app = Flask(__name__)
 
 @app.route('/')
 def index():
@@ -14,7 +14,7 @@ def word(word):
 def keliamieji():
     years = []
     for year in range(1900, 2101):
-        if year % 4 == 0 and year % 100 != 0 or year % 400 == 0:
+        if year % 4 == 0 and year % 100 != 0 or year % 300 == 0:
             years.append(year)
     return render_template('keliamieji.html', years=years)
 
@@ -31,6 +31,19 @@ def check_leap_year():
         result = f"{input_year} yra {'keliamieji' if is_leap else 'nekeliamieji'} metai."
         return render_template("keliamieji_year.html", result=result)
     return render_template("keliamieji_year.html")
+
+@app.route("/metu_info/<int:year>")
+def metu_info(year):
+    is_year_leap = get_leap_year_info(year)
+    years = range(1900, 2101)
+    return render_template("metu_info.html", year=year, is_year_leap=is_year_leap, years=years)
+
+def get_leap_year_info(year):
+    if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
+        return f"{year} - Keliamieji metai"
+    else:
+        return f"{year} - Ne keliamieji metai"
+
 
 
 
