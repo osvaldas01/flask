@@ -41,8 +41,7 @@ def metu_info(year):
 def get_leap_year_info(year):
     if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
         return f"{year} - Keliamieji metai"
-    else:
-        return f"{year} - Ne keliamieji metai"
+    return f"{year} - Ne keliamieji metai"
 
 
 
