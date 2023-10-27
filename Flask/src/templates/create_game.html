@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Create a New Game:</h1>
+<form method="POST" action="/create_game">
+    <div class="mb-3">
+        <label for="team1" class="form-label">Team 1:</label>
+        <input type="text" class="form-control" id="team1" name="team1" required>
+    </div>
+    <div class="mb-3">
+        <label for="team2" class="form-label">Team 2:</label>
+        <input type="text" class="form-control" id="team2" name="team2" required>
+    </div>
+    <div class="mb-3">
+        <label for="match_date" class="form-label">Match Date:</label>
+        <input type="text" class="form-control" id="match_date" name="match_date" required>
+    </div>
+    <div class="mb-3">
+        <label for="result" class="form-label">Result:</label>
+        <input type="text" class="form-control" id="result" name="result">
+    </div>
+    <button type="submit" class="btn btn-primary">Create Game</button>
+</form>
+{% endblock %}

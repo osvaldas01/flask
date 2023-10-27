@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<head>
+    <title>Team Bets</title>
+    <style>
+        /* Add CSS styling for the table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bets on Team:</h1>
+    <table>
+        <tbody>
+            <table>
+                <tr>
+                    <th>Username</th>
+                    <th>Surname</th>
+                    <th>Guessed Score</th>
+                </tr>
+                {% for player in guessed_people %}
+                <tr>
+                    <td>{{ player[0] }}</td>
+                    <td>{{ player[1] }}</td>
+                    <td>{{ player[2] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </tbody>
+    </table>
+
+    <!-- Add "Delete Match" button with a hyperlink -->
+<a href="{{ url_for('delete_match', match_id=match_id) }}" class="btn btn-danger">Delete Match</a>
+
+    <!-- Add "Change Score" button with a hyperlink -->
+    <a href="{{ url_for('change_score', match_id=match_id) }}" class="btn btn-primary">Change Score</a>
+</body>
+{% endblock %}

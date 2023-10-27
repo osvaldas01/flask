@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Game</title>
+    <style>
+        /* Add CSS styling for the table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Teams:</h1>
+    <!-- Modify the table to add a link to calculate points for each match -->
+<table>
+    <tbody>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Team 1</th>
+                <th>Team 2</th>
+                <th>Score</th>
+                <th>Calculate Points</th>
+            </tr>
+        {% for game in team_names %}
+        <tr>
+            <td>
+                <a href="{{ url_for('team_bets', team_id=game[0]) }}"> {{loop.index}} </a>
+            </td>
+            <td>{{ game[1] }}</td>
+            <td>{{ game[2] }}</td>
+            <td>{{ game[3] }}</td>
+            <td>
+                {% if game[3] %}
+                    <a href="{{ url_for('calculate_points', match_id=game[0]) }}">Calculate</a>
+                {% else %}
+                    No Result
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+        </table>
+    </tbody>
+</table>
+
+<body>
+    <h1>Select a Game:</h1>
+    <form method="POST" action="/submit_prediction"> <!-- Set the form action to your submit route -->
+        <div class="mb-3">
+            <label for="game_id" class="form-label">Select Game:</label>
+            <select class="form-select" id="game_id" name="game_id" required>
+                {% for game in team_names %}
+                    <option value="{{ game[0] }}">{{ game[1] }} vs {{ game[2] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <!-- Include other form fields here, e.g., username, guessed_score, etc. -->
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="text" name="surname" placeholder="Surname" required>
+        <input type="text" name="guessed_score" placeholder="Guessed Score" required>
+        <input type="submit" value="Guess">
+    </form>
+</body>
+</html>
+{% endblock %}

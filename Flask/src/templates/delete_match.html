@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<head>
+    <title>Delete Match</title>
+</head>
+<body>
+    <h1>Delete Match</h1>
+    <p>Are you sure you want to delete this match?</p>
+    <form method="post" action="{{ url_for('delete_match', match_id=match_id) }}">
+        <input type="hidden" name="match_id" value="{{ match_id }}">
+        <input type="submit" value="Delete Match">
+    </form>
+</body>
+{% endblock %}
